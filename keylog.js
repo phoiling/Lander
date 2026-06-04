@@ -1,11 +1,13 @@
 var canvas = document.getElementById("lander");
 var context = canvas.getContext("2d");
 context.moveTo(100,100)
-context.lineTo(112.5,10);
+context.lineTo(112.5,80);
 context.lineTo(125,100);
 context.lineTo(125,200);
 context.lineTo(100,200);
 context.lineTo(100,100);
+context.ellipse(112.5 ,100, 12.5, 25, 0, 0, 2*Math.PI)
+
 context.fillStyle = "red";
 context.fill();
 
