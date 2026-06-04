@@ -1,7 +1,11 @@
 var canvas = document.getElementById("lander");
 var context = canvas.getContext("2d");
-
-context.rect(0, 0, 100, 100);
+context.moveTo(100,100)
+context.lineTo(112.5,10);
+context.lineTo(125,100);
+context.lineTo(125,200);
+context.lineTo(100,200);
+context.lineTo(100,100);
 context.fillStyle = "red";
 context.fill();
 
