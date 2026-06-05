@@ -1,28 +1,51 @@
 var canvas = document.getElementById("lander");
 var context = canvas.getContext("2d");
-context.moveTo(100,100)
-context.lineTo(112.5,80);
-context.lineTo(125,100);
-context.lineTo(125,200);
-context.lineTo(100,200);
-context.lineTo(100,100);
-context.ellipse(112.5 ,100, 12.5, 25, 0, 0, 2*Math.PI)
+var lander = 
+{
+    color: "black",
+    width: 25,
+    height: 100,
 
-context.fillStyle = "red";
-context.fill();
+    position:{
+        x: 100,
+        y: 100
+    },
+    angle:0,
+    engineOn: false,
+    rotatingLeft: false,
+    rotatingRight: false,
+}
+var x = 0
+
+function drawlander(){
+    context.save();
+    context.translate(lander.position.x, lander.position.y);
+    context.beginPath();
+    context.rect(lander.width * -0.5 , lander.height * -0.5 , lander.width , lander.height);
+    context.ellipse(0 ,lander.height * -0.5, lander.width/2 , lander.height/4 , 0, 0, 2*Math.PI)
+    context.fillStyle = lander.color
+    context.fill();
+    context.closePath();
+    context.restore();
+
+    if (lander.engineOn){
+        
+    }
+}
+
+drawlander();
 
 
 document.addEventListener('keydown', function(event) {
     if (event.key === 'W' || event.key ==='w'){
         console.log('W');
-        box.style.top = 1 +'px';
     }
     if (event.key === 'A' || event.key ==='a'){
         console.log('A');
     }
     if (event.key === 'S' || event.key ==='s'){
         console.log('S');
-        box.style.bottom = 'px'-1;
+
     }
     if (event.key === 'D' || event.key ==='d'){
         console.log('D');
