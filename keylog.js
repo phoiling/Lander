@@ -1,5 +1,7 @@
 var canvas = document.getElementById("lander");
 var context = canvas.getContext("2d");
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
 var lander = 
 {
     color: "black",
@@ -16,6 +18,8 @@ var lander =
     rotatingRight: false,
 }
 var x = 0
+
+
 
 function drawlander(){
     context.save();
