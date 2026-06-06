@@ -1,5 +1,6 @@
 var canvas = document.getElementById("lander");
 var context = canvas.getContext("2d");
+var gravity = 0.1
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 var lander = 
@@ -9,13 +10,22 @@ var lander =
     height: 100,
 
     position:{
-        x: 100,
-        y: 100
+        x: 300,
+        y: 300
     },
+    velocity:{
+        x:0,
+        y:0
+    },
+    angleVelocty:0,
     angle:0,
     engineOn: false,
     rotatingLeft: false,
     rotatingRight: false,
+    thrust:{
+        mainEngine:0.15,
+        rotateEngine:0.001
+    },
 }
 var x = 0
 
@@ -48,21 +58,25 @@ function drawlander(){
 
 function updateLander()
 {
+    lander.position.x += lander.velocity.x;
+    lander.position.y += lander.velocity.y;
     if(lander.rotatingRight)
     {
-        lander.angle += Math.PI / 180;
+        lander.angleVelocty += lander.thrust.rotateEngine;
     }
-     if(lander.rotatingLeft)
+    if(lander.rotatingLeft)
     {
-        lander.angle -= Math.PI / 180;
+        lander.angleVelocty -= lander.thrust.rotateEngine;
     }
     if (lander.engineOn)
     {
-        lander.position.x += Math.sin(lander.angle)
-        lander.position.y -= Math.cos(lander.angle)
+        lander.velocity.x -= lander.thrust.mainEngine * Math.sin(-lander.angle);
+        lander.velocity.y -= lander.thrust.mainEngine * Math.cos(lander.angle);
     }
+    lander.velocity.y += gravity;
+    lander.angle += lander.angleVelocty;
 }
-
+ 
 function draw()
 {
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -79,7 +93,7 @@ draw();
 
 
 document.addEventListener('keydown', function(event) {
-    if (event.key === 'W' || event.key ==='w'){
+    if (event.key === 'W' || event.key ==='w' ){
         console.log('W');
         lander.engineOn = true
     }
