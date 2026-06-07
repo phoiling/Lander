@@ -6,7 +6,7 @@ canvas.height = window.innerHeight;
 startStars();
 var lander = 
 {
-    color: "black",
+    color: "white",
     width: 25,
     height: 100,
 
@@ -78,22 +78,6 @@ function updateLander()
     lander.angle += lander.angleVelocty;
 }
  
-function draw()
-{
-    context.clearRect(0, 0, canvas.width, canvas.height);
-
-    drawStars();
-
-    updateLander();
-    
-    drawlander();
-     
-    requestAnimationFrame(draw);
-}
-
-draw();
-
-
 
 document.addEventListener('keydown', function(event) {
     if (event.key === 'W' || event.key ==='w' ){
