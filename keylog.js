@@ -1,8 +1,9 @@
 var canvas = document.getElementById("lander");
 var context = canvas.getContext("2d");
 var gravity = 0.1
-canvas.width = window.innerWidth
-canvas.height = window.innerHeight
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+startStars();
 var lander = 
 {
     color: "black",
@@ -17,14 +18,14 @@ var lander =
         x:0,
         y:0
     },
-    angleVelocty:0,
+    angleVelocty:0.01,
     angle:0,
     engineOn: false,
     rotatingLeft: false,
     rotatingRight: false,
     thrust:{
-        mainEngine:0.15,
-        rotateEngine:0.001
+        mainEngine:0.2,
+        rotateEngine:0.0015
     },
 }
 var x = 0
@@ -47,7 +48,7 @@ function drawlander(){
         context.beginPath();
         context.moveTo(lander.width * -0.5, lander.height * 0.5);
         context.lineTo(lander.width * 0.5, lander.height * 0.5);
-        context.lineTo(0, lander.height+ Math.random() * 5);
+        context.lineTo(0, lander.height+ Math.random() * 10);
         context.lineTo(lander.width * -0.5, lander.height * 0.5);
         context.closePath();
         context.fillStyle = "orange"
@@ -80,6 +81,8 @@ function updateLander()
 function draw()
 {
     context.clearRect(0, 0, canvas.width, canvas.height);
+
+    drawStars();
 
     updateLander();
     
