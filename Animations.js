@@ -7,7 +7,9 @@ function draw()
     updateLander();
     
     drawlander();
-     
+
+    audioLoop();
+    
     requestAnimationFrame(draw);
 }
 draw();
