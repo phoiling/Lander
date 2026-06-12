@@ -3,7 +3,7 @@ let thruster = new Audio("audio/thruster.mp3");
 
 engine.loop = true;
 thruster.loop = true;
-thruster.volume("10%");
+thruster.volume = 0.5;
 
 function audioLoop () {
     if (lander.engineOn === true){
